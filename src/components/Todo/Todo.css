@@ -85,6 +85,11 @@
     cursor: pointer;
     transition: background 0.2s ease-out;
   }
+  @media only screen and (max-width: 600px) {
+    .Todo-edit-form button {
+      background-color: lightblue;
+    }
+  }
   .Todo-edit-form button:hover {
     background: #ff5e5e;
   }
