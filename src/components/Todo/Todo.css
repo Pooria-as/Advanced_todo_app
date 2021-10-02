@@ -21,7 +21,7 @@
   }
   
   .Todo.completed .Todo-task {
-    /* opacity: 0.6; */
+    opacity: 0.6;
   }
   .Todo.completed .Todo-task:before {
     content: "";

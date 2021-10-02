@@ -1,4 +1,5 @@
 import React from "react"
+import swal from "sweetalert";
 import "./Todo.css"
 class Todo extends React.Component {
    constructor(props)
@@ -9,10 +10,28 @@ class Todo extends React.Component {
            task:this.props.task
        }
    }
+   
 
    removeHandler = () =>
    {
-    this.props.remove(this.props.id)
+    swal({
+        title: "Are You Sure To Delete ?",
+      
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Poof! Your imaginary file has been deleted!", {
+            icon: "success",
+          });
+          this.props.remove(this.props.id)
+
+        } else {
+          swal("Your imaginary file is safe!");
+        }
+      });
    }
 
    EditHandlerValue = (e) =>
@@ -25,35 +44,41 @@ class Todo extends React.Component {
     EditFormHandler = (e) =>
     {
         e.preventDefault();
-        this.props.update(this.props.id,this.state.task)
+        if(this.state.task)
+        {
+            swal({
+                title: "Good job!",
+                text: "You Todo Edited Successfully ! 😙",
+                icon: "success",
+            });
+            this.props.update(this.props.id,this.state.task)
+        }
+
         this.setState({
             Edit:!this.state.Edit
         })
     }
     completedHandler =()=>
     {
+        
         this.props.completedToggle(this.props.id)
-        console.log(this.props.completed    )
        
     }
-
-
-    
     render() {
         let result; 
         if(this.state.Edit)
         {
             result =(
              <div className='Todo'>
-                <form className='Todo-edit-form' onSubmit={this.EditFormHandler}>
+                <form className='Todo-edit-form'  onSubmit={this.EditFormHandler}>
                     <input
-                    className='Todo-edit-form input'
+                   
                     name='task'
                     type='text'
                     value={this.state.task}
                     onChange={this.EditHandlerValue}
                     />
-                    <button className='Todo-edit-form button'>
+                    <button>
                         save 
                     </button>
                 </form>
@@ -63,21 +88,23 @@ class Todo extends React.Component {
         else
         {
             result=(
-                <div className='Todo'>
-            <button onClick={()=>this.setState({Edit:true})}>
+             <div className='Todo'>
+                 <li
+                className={this.props.completed ? "Todo-task completed" : "Todo-task"}
+                onClick={this.completedHandler}
+                >
+                {this.props.task}
+                </li>
+                <div className='Todo-buttons'>
+                <button onClick={()=>this.setState({Edit:true})}>
                 <i className='fas fa-pen'>
                 </i>
             </button>
             <button onClick={this.removeHandler}>
             <i className='fas fa-trash'>
                 </i>
-            </button>
-                <li
-                className={this.props.completed ? "Todo-task completed" : "Todo-task"}
-                onClick={this.completedHandler}
-                >
-                {this.props.task}
-                </li>
+            </button>    
+                </div>    
         </div>
             )
         }
