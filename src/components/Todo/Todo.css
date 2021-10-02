@@ -42,8 +42,7 @@
   }
   
   .Todo-buttons {
-    flex-shrink: 0;
-    padding-left: 0.7em;
+  
     margin-left: auto;
   }
   
@@ -96,6 +95,7 @@
   .Todo-edit-form input,
   .Todo-edit-form button {
     font-family: "Quicksand", sans-serif;
-    height: 3rem;
+    margin-top: 2%;
+    height: 2rem;
   }
   

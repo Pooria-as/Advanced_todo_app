@@ -72,13 +72,13 @@ class Todo extends React.Component {
              <div className='Todo'>
                 <form className='Todo-edit-form'  onSubmit={this.EditFormHandler}>
                     <input
-                   
+             
                     name='task'
                     type='text'
                     value={this.state.task}
                     onChange={this.EditHandlerValue}
                     />
-                    <button>
+                    <button className='btn btn-primary btn-block m-1'>
                         save 
                     </button>
                 </form>

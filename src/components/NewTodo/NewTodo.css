@@ -17,16 +17,8 @@
     font-size: initial;
     outline: none;
   }
-  @media only screen and (max-width: 768px) {
-    .NewTodoForm  input{
-      border: none;
-      background: #f7f1f1;
-      margin-top: auto;
-      padding: 0 1.5em;
-      font-size: initial;
-      outline: none;
-    }
-  }
+
+  
   .NewTodoForm button {
     padding: 0 1.3rem;
     border: none;

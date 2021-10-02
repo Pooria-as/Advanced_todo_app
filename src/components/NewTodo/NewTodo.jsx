@@ -49,7 +49,7 @@ class NewTodo extends React.Component {
                     className='NewTodoForm input'
                     onChange={this.ChangeHandler}
                     />
-                    <button type='submit'>
+                    <button type='submit' className='btn btn-block m-1'>
                         <i className='fas fa-add'></i>
                     </button>
                 </form>
